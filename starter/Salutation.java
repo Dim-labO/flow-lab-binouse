@@ -1,5 +1,8 @@
-// Starting point for TP 06. One method, one line per member: the conflicts are real because
-// everyone edits the same place, which is exactly what happens on a shared codebase.
+import java.time.LocalTime;
+
+// Point de départ du TP 06.
+// Chaque membre du groupe ajoute sa salutation au même endroit,
+// afin de provoquer volontairement des conflits lors des Pull Requests.
 public class Salutation {
 
   public static void main(String[] args) {
@@ -7,7 +10,14 @@ public class Salutation {
   }
 
   static String saluer(String nom) {
-    // TODO: chaque membre du groupe ajoute ICI sa salutation, dans sa propre branche.
-    return "Hello, " + nom + "!";
+    LocalTime heure = LocalTime.now();
+
+    if (heure.isBefore(LocalTime.NOON)) {
+      return "Bonjour, " + nom + " !";
+    } else if (heure.isBefore(LocalTime.of(18, 0))) {
+      return "Bon après-midi, " + nom + " !";
+    } else {
+      return "Bonsoir, " + nom + " !";
+    }
   }
 }
